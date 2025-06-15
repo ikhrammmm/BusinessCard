@@ -1,6 +1,6 @@
 # BusinessCard
 
-# 🌟 Digital Business Card - Muhammad Ikhram bin Mat Isa
+# 🌟 Digital Business Card
 
 A modern, responsive digital business card website with interactive features and sleek army green theme.
 
@@ -8,7 +8,7 @@ A modern, responsive digital business card website with interactive features and
 
 ## 🚀 Live Demo
 
-[Visit Live Website](https://your-username.github.io/digital-business-card) *(Update with your GitHub Pages URL)*
+[Visit Live Website](https://ikhrammmm.github.io/BusinessCard) *(Update with your GitHub Pages URL)*
 
 ## ✨ Features
 
