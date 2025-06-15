@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Ikhram bin Mat Isa - Founder, Binary Centre</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .business-card {
+            background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 100%;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(107, 142, 35, 0.3);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .business-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 30px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(107, 142, 35, 0.5);
+        }
+
+        .business-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #6B8E23, #9ACD32, #6B8E23);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #9ACD32, #6B8E23);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .position {
+            font-size: 1.1rem;
+            color: #9ACD32;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 1rem;
+            color: #cccccc;
+            font-style: italic;
+        }
+
+        .contact-info {
+            margin: 30px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(107, 142, 35, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(107, 142, 35, 0.1);
+            border-radius: 8px;
+            padding-left: 10px;
+            border-bottom: 1px solid rgba(107, 142, 35, 0.4);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .location-item {
+            cursor: pointer;
+        }
+
+        .location-item:hover .expand-icon {
+            transform: rotate(180deg);
+        }
+
+        .map-container {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin 0.4s ease;
+            margin: 0;
+            border-radius: 12px;
+        }
+
+        .map-container.show {
+            max-height: 320px;
+            margin: 15px 0;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            fill: #9ACD32;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact-text:hover {
+            color: #9ACD32;
+        }
+
+        .qr-section {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 2px solid rgba(107, 142, 35, 0.3);
+        }
+
+        .qr-title {
+            font-size: 1rem;
+            color: #9ACD32;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .qr-container {
+            display: inline-block;
+            padding: 15px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .qr-container:hover {
+            transform: scale(1.05);
+        }
+
+        .qr-code {
+            width: 120px;
+            height: 120px;
+        }
+
+        .whatsapp-text {
+            font-size: 0.85rem;
+            color: #cccccc;
+            margin-top: 10px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: #888888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .business-card {
+                padding: 30px 25px;
+                margin: 10px;
+            }
+
+            .name {
+                font-size: 1.8rem;
+            }
+
+            .position {
+                font-size: 1rem;
+            }
+
+            .company {
+                font-size: 0.9rem;
+            }
+
+            .contact-text {
+                font-size: 0.9rem;
+            }
+
+            .qr-code {
+                width: 100px;
+                height: 100px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .name {
+                font-size: 1.6rem;
+            }
+
+            .business-card {
+                padding: 25px 20px;
+            }
+        }
+
+        /* Animation */
+        .business-card {
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="business-card">
+        <div class="header">
+            <h1 class="name">Muhammad Ikhram bin Mat Isa</h1>
+            <div class="position">Founder</div>
+            <div class="company">Binary Centre</div>
+        </div>
+
+        <div class="contact-info">
+            <div class="contact-item" onclick="saveContact()">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/>
+                </svg>
+                <span class="contact-text">011-3663 1534</span>
+                <svg class="save-icon" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-left: auto; fill: #9ACD32;">
+                    <path d="M17,3H7A2,2 0 0,0 5,5V21L12,18L19,21V5A2,2 0 0,0 17,3M12,15A3,3 0 0,1 9,12A3,3 0 0,1 12,9A3,3 0 0,1 15,12A3,3 0 0,1 12,15Z"/>
+                </svg>
+            </div>
+
+            <a href="mailto:muhammadikhrammatisa@gmail.com" class="contact-item">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M20,8L12,13L4,8V6L12,11L20,6M20,4H4C2.89,4 2,4.89 2,6V18A2,2 0 0,0 4,20H20A2,2 0 0,0 22,18V6C22,4.89 21.1,4 20,4Z"/>
+                </svg>
+                <span class="contact-text">muhammadikhrammatisa@gmail.com</span>
+            </a>
+
+            <div class="contact-item location-item" onclick="toggleMap()">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5M12,2A7,7 0 0,0 5,9C5,14.25 12,22 12,22C12,22 19,14.25 19,9A7,7 0 0,0 12,2Z"/>
+                </svg>
+                <span class="contact-text">Bukit Mertajam, Penang</span>
+                <svg class="expand-icon" viewBox="0 0 24 24" style="width: 16px; height: 16px; margin-left: auto; fill: #9ACD32; transition: transform 0.3s ease;">
+                    <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
+                </svg>
+            </div>
+
+            <div class="map-container" id="mapContainer">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d74234.26424600447!2d100.46752735!3d5.3554520000000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304ac8e598b893bf%3A0x763116f720d28c2a!2sBukit%20Mertajam%2C%20Penang!5e1!3m2!1sen!2smy!4v1749967849506!5m2!1sen!2smy" 
+                        width="100%" 
+                        height="300" 
+                        style="border:0; border-radius: 12px;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+
+            <a href="https://www.binarycentre.my" target="_blank" class="contact-item">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <path d="M16.36,14C16.44,13.34 16.5,12.68 16.5,12C16.5,11.32 16.44,10.66 16.36,10H19.74C19.9,10.64 20,11.31 20,12C20,12.69 19.9,13.36 19.74,14M14.59,19.56C15.19,18.45 15.65,17.25 15.97,16H18.92C17.96,17.65 16.43,18.93 14.59,19.56M14.34,14H9.66C9.56,13.34 9.5,12.68 9.5,12C9.5,11.32 9.56,10.65 9.66,10H14.34C14.43,10.65 14.5,11.32 14.5,12C14.5,12.68 14.43,13.34 14.34,14M12,19.96C11.17,18.76 10.5,17.43 10.09,16H13.91C13.5,17.43 12.83,18.76 12,19.96M8,8H5.08C6.03,6.34 7.57,5.06 9.4,4.44C8.8,5.55 8.35,6.75 8,8M5.08,16H8C8.35,17.25 8.8,18.45 9.4,19.56C7.57,18.93 6.03,17.65 5.08,16M4.26,14C4.1,13.36 4,12.69 4,12C4,11.31 4.1,10.64 4.26,10H7.64C7.56,10.66 7.5,11.32 7.5,12C7.5,12.68 7.56,13.34 7.64,14M12,4.03C12.83,5.23 13.5,6.57 13.91,8H10.09C10.5,6.57 11.17,5.23 12,4.03M18.92,8H15.97C15.65,6.75 15.19,5.55 14.59,4.44C16.43,5.07 17.96,6.34 18.92,8M12,2C6.47,2 2,6.5 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z"/>
+                </svg>
+                <span class="contact-text">www.binarycentre.my</span>
+            </a>
+        </div>
+
+        <div class="qr-section">
+            <div class="qr-title">Connect on WhatsApp</div>
+            <div class="qr-container">
+                <canvas class="qr-code" id="qrcode"></canvas>
+            </div>
+            <div class="whatsapp-text">Scan to chat instantly</div>
+        </div>
+
+        <div class="footer">
+            Digital Business Card • Binary Centre
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script>
+        // Generate QR Code
+        document.addEventListener('DOMContentLoaded', function() {
+            const qr = new QRious({
+                element: document.getElementById('qrcode'),
+                value: 'https://wassap.my/601136631534',
+                size: 120,
+                background: '#ffffff',
+                foreground: '#2d2d2d',
+                level: 'M'
+            });
+        });
+
+        // Save Contact Function
+        function saveContact() {
+            // Create vCard format
+            const vCard = `BEGIN:VCARD
+VERSION:3.0
+FN:Muhd Ikhram Binary Centre
+N:Mat Isa;Muhammad Ikhram;;;
+ORG:Binary Centre
+TITLE:Founder
+TEL;TYPE=CELL:+60113663153
+EMAIL:muhammadikhrammatisa@gmail.com
+URL:https://www.binarycentre.my
+ADR:;;Bukit Mertajam;Penang;;;Malaysia
+END:VCARD`;
+
+            // Create blob and download
+            const blob = new Blob([vCard], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = 'Muhd_Ikhram_Binary_Centre.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            window.URL.revokeObjectURL(url);
+
+            // Show feedback
+            const phoneItem = event.currentTarget;
+            const originalText = phoneItem.querySelector('.contact-text').textContent;
+            phoneItem.querySelector('.contact-text').textContent = 'Contact Saved!';
+            phoneItem.style.background = 'rgba(107, 142, 35, 0.2)';
+            
+            setTimeout(() => {
+                phoneItem.querySelector('.contact-text').textContent = originalText;
+                phoneItem.style.background = 'transparent';
+            }, 2000);
+        }
+
+        // Toggle Google Maps
+        function toggleMap() {
+            const mapContainer = document.getElementById('mapContainer');
+            const expandIcon = document.querySelector('.expand-icon');
+            
+            if (mapContainer.classList.contains('show')) {
+                mapContainer.classList.remove('show');
+                expandIcon.style.transform = 'rotate(0deg)';
+            } else {
+                mapContainer.classList.add('show');
+                expandIcon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Add smooth hover effects
+        document.querySelectorAll('.contact-item:not(.location-item)').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(5px)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0)';
+            });
+        });
+
+        // Special hover effect for location item
+        document.querySelector('.location-item').addEventListener('mouseenter', function() {
+            this.style.transform = 'translateX(5px)';
+            this.style.background = 'rgba(107, 142, 35, 0.15)';
+        });
+
+        document.querySelector('.location-item').addEventListener('mouseleave', function() {
+            this.style.transform = 'translateX(0)';
+            this.style.background = 'transparent';
+        });
+    </script>
+</body>
+</html>
